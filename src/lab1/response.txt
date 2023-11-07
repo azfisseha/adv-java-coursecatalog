@@ -1,0 +1,20 @@
+Lab 1:
+I noticed in lab1 that some of the different course classes didn't have setters and getters declared for every property (not that every property inherently needs one, but there were simply inconsistencies in which the same property had these accessors/mutators in one class but not the other). When later applying the Liskov Substitution principle,
+
+I went back and ensured that my abstract class declared the need for getters for every property, as I couldn't see a reason why some courses would need to hide any of this information.
+
+When building my abstract class, I pulled together every reoccurring property while ignoring the one property that didn't exist in every class - prerequsites was not present in IntroToProgrammingCourse, and thus would not be relevant in an abstract parent class Course.
+
+courseName was not originally declared as a private property in most of the classes, so I corrected this.  prerequisites was also not a private property, corrected here as well.
+
+Some of the courses had input validation on their course name / number, while others did not.  I didn't see a reason that they shouldn't all be subject to input validation, so I moved this logic into the abstract class.
+
+I declared setCredits as an abstract method in my parent class, because the valid credit range varied between course offering.  I then moved the maximum of that range into a final constant MAX_CREDITS property, to get rid of the magic numbers in the code.
+
+
+Lab 2:
+My Course interface felt quite a lot easier to implement than an abstract.  Only the IntroJavaCourse class was missing method definitions for get/set courseName. I updated the property declarations in each class to be the same access level as one another.
+
+From the perspective of the driver, interface inheritance keeps information where it is most relevant - my driver should not care about How my course does something, only that each instance of Course Can do that something.
+
+As far as Liskov Substitution, I decided to name my interface for this lab the same as I did for the one in the first lab, and copy-pasted my entire driver program with 0 changes.  All of my object declarations were as Course = X, and everything worked as expected.
